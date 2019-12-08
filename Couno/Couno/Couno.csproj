@@ -55,6 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AbilityTokenViewModel.cs" />
+    <Compile Include="CounoTestFight.cs" />
+    <Compile Include="Engine\Enemy.cs" />
+    <Compile Include="Engine\Ability.cs" />
+    <Compile Include="Engine\AbilityActionQueueResolver.cs" />
+    <Compile Include="Engine\AbilityActionsQueue.cs" />
+    <Compile Include="Engine\AbilityBuilder.cs" />
+    <Compile Include="Engine\AbilityToken.cs" />
+    <Compile Include="Engine\AbilityType.cs" />
+    <Compile Include="Engine\IAbilityActionQueueResolver.cs" />
+    <Compile Include="Engine\IAbilityToken.cs" />
+    <Compile Include="Engine\Player.cs" />
+    <Compile Include="Engine\ICounoFightEnvironment.cs" />
+    <Compile Include="Engine\ResolveResult.cs" />
+    <Compile Include="Engine\TargetBase.cs" />
+    <Compile Include="Engine\TargetSelectionRequirement.cs" />
+    <Compile Include="Engine\ITarget.cs" />
     <Compile Include="Shared\CodeGuard.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

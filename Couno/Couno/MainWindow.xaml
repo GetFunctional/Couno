@@ -9,5 +9,27 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid />
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <ItemsControl ItemsSource="{Binding Nodes}" />
+
+        <WrapPanel Grid.Row="1">
+            <Button Click="AddNode" Content="Add Node" />
+            <Button Click="Evaluate" Content="Evaluate" />
+        </WrapPanel>
+
+
+        <ScrollViewer Grid.Row="2">
+            <TextBox
+                x:Name="OutputConsole"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                AcceptsReturn="True" />
+        </ScrollViewer>
+    </Grid>
 </Window>
