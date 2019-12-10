@@ -13,7 +13,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -23,15 +22,15 @@
 
         <local:FighterView
             x:Name="Player"
-            Grid.Row="1"
+            Grid.Row="0"
             Grid.Column="0" />
 
         <local:FighterView
             x:Name="Enemy"
-            Grid.Row="1"
+            Grid.Row="0"
             Grid.Column="1" />
 
-        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="2">
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
             <TextBox
                 x:Name="OutputConsole"
                 HorizontalAlignment="Stretch"

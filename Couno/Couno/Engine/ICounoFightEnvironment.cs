@@ -2,8 +2,12 @@
 {
     public interface ICounoFightEnvironment
     {
-        Player Player { get; }
+        Character Player { get; }
 
-        Enemy Enemy { get; }
+        Character Enemy { get; }
+
+        TargetSelectionRequirement GetTargetSelectionRequirementForAction(Character character, IAbilityToken ability);
+        ITarget AutoSelectTargetForAction(Character character, IAbilityToken ability);
+        object ResolveAbility(Character character, IAbilityToken ability, ITarget target);
     }
 }

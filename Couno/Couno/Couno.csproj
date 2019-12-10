@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -57,7 +59,6 @@
     </ApplicationDefinition>
     <Compile Include="AbilityTokenViewModel.cs" />
     <Compile Include="CounoTestFight.cs" />
-    <Compile Include="Engine\Enemy.cs" />
     <Compile Include="Engine\Ability.cs" />
     <Compile Include="Engine\AbilityActionQueueResolver.cs" />
     <Compile Include="Engine\AbilityActionsQueue.cs" />
@@ -66,8 +67,9 @@
     <Compile Include="Engine\AbilityType.cs" />
     <Compile Include="Engine\IAbilityActionQueueResolver.cs" />
     <Compile Include="Engine\IAbilityToken.cs" />
-    <Compile Include="Engine\Player.cs" />
+    <Compile Include="Engine\Character.cs" />
     <Compile Include="Engine\ICounoFightEnvironment.cs" />
+    <Compile Include="Engine\Item.cs" />
     <Compile Include="Engine\ResolveResult.cs" />
     <Compile Include="Engine\TargetBase.cs" />
     <Compile Include="Engine\TargetSelectionRequirement.cs" />

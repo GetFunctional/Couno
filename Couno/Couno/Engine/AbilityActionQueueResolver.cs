@@ -7,9 +7,9 @@ namespace Couno.Engine
 {
     internal class AbilityActionQueueResolver : IAbilityActionQueueResolver
     {
-        public TargetSelectionRequirement GetTargetSelectionRequirement(IAbilityToken abilityAction, ICounoFightEnvironment fight)
+        public TargetSelectionRequirement GetTargetSelectionRequirement(Character character, IAbilityToken ability)
         {
-            switch (abilityAction.Ability.AbilityType)
+            switch (ability.Ability.AbilityType)
             {
                 case AbilityType.TakeAncestor:
                 case AbilityType.TakeDescendant:
@@ -24,40 +24,33 @@ namespace Couno.Engine
             }
         }
 
-        public ITarget AutoSelectTarget(IAbilityToken abilityAction, ITarget executor, IList<ITarget> enemies)
+        public ITarget AutoSelectTarget(Character character, IAbilityToken ability, IList<ITarget> enemiesOfTarget)
         {
-            switch (abilityAction.Ability.AbilityType)
+            switch (ability.Ability.AbilityType)
             {
                 case AbilityType.TakeAncestor:
                 case AbilityType.TakeDescendant:
                 case AbilityType.None:
                     return null;
                 case AbilityType.Attack:
-                    return enemies.First();
+                    return enemiesOfTarget.First();
                 case AbilityType.Block:
-                    return executor;
+                    return character;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
-
-        public ITarget AutoSelectTarget(IAbilityToken abilityAction, ITarget executor, ITarget enemy)
+        
+        public ResolveResult Resolve(Character character, IAbilityToken ability, IList<ITarget> targets)
         {
-            return AutoSelectTarget(abilityAction, executor, new List<ITarget>() {enemy});
-        }
-
-        public ResolveResult Resolve(IAbilityToken abilityAction, ITarget executor, ITarget target)
-        {
-            switch (abilityAction.Ability.AbilityType)
+            switch (ability.Ability.AbilityType)
             {
                 case AbilityType.None:
                     break;
                 case AbilityType.Attack:
-                    return this.ResolveAttack(abilityAction, executor, target);
-                    break;
+                    return this.ResolveAttack(character, ability, targets);
                 case AbilityType.Block:
-                    return this.ResolveBlock(abilityAction, executor, target);
-                    break;
+                    return this.ResolveBlock(character, ability, targets);
                 case AbilityType.TakeAncestor:
                     break;
                 case AbilityType.TakeDescendant:
@@ -69,38 +62,45 @@ namespace Couno.Engine
             return new ResolveResult("Nothing to resolve");
         }
 
-        private ResolveResult ResolveBlock(IAbilityToken abilityAction, ITarget executor, ITarget target)
+        private ResolveResult ResolveBlock(Character character, IAbilityToken ability, IList<ITarget> targets)
         {
-            var log = new StringBuilder($"Resolving ({abilityAction})");
-            var blockAmount = abilityAction.Ability.Amount;
-            target.AddBlock(blockAmount);
+            var log = new StringBuilder($"Resolving ({ability})");
+            var blockAmount = ability.Ability.Amount;
 
-            log.AppendLine($"Target gained block for {blockAmount}. {target.Block} remaining.");
+            foreach (var target in targets)
+            {
+                target.AddBlock(blockAmount);
+                log.AppendLine($"Target gained block for {blockAmount}. {target.Block} remaining.");
+            }
+            
 
             return new ResolveResult(log.ToString());
         }
 
-        private ResolveResult ResolveAttack(IAbilityToken abilityAction, ITarget executor, ITarget target)
+        private ResolveResult ResolveAttack(Character character, IAbilityToken ability, IList<ITarget> targets)
         {
-            var log = new StringBuilder($"Resolving ({abilityAction})");
-            var damageAmount = abilityAction.Ability.Amount;
+            var log = new StringBuilder($"Resolving ({ability})");
+            var damageAmount = ability.Ability.Amount;
 
-            if (target.Block > 0)
+            foreach (var target in targets)
             {
-                var restDamage = 0;
-                if (target.Block <= damageAmount)
+                if (target.Block > 0)
                 {
-                    restDamage += damageAmount - target.Block;
+                    var restDamage = 0;
+                    if (target.Block <= damageAmount)
+                    {
+                        restDamage += damageAmount - target.Block;
+                    }
+                    target.ReduceBlock(damageAmount);
+                    target.ReduceHealth(restDamage);
                 }
-                target.ReduceBlock(damageAmount);
-                target.ReduceHealth(restDamage);
-            }
-            else
-            {
-                target.ReduceHealth(damageAmount);
-            }
+                else
+                {
+                    target.ReduceHealth(damageAmount);
+                }
 
-            log.AppendLine($"Target was hit for {damageAmount}. {target.Health} remaining.");
+                log.AppendLine($"Target was hit for {damageAmount}. {target.Health} remaining.");
+            }
 
             return new ResolveResult(log.ToString());
         }

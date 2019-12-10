@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Couno.Engine
 {
     internal interface IAbilityActionQueueResolver
     {
-        ResolveResult Resolve(IAbilityToken abilityAction, ITarget executor, ITarget target);
+        ResolveResult Resolve(Character character, IAbilityToken ability, IList<ITarget> enemiesOfCharacter);
 
-        TargetSelectionRequirement GetTargetSelectionRequirement(IAbilityToken abilityAction,
-            ICounoFightEnvironment fight);
+        TargetSelectionRequirement GetTargetSelectionRequirement(Character character, IAbilityToken ability);
 
-        ITarget AutoSelectTarget(IAbilityToken abilityAction, ITarget executor, IList<ITarget> enemies);
-
-        ITarget AutoSelectTarget(IAbilityToken abilityAction, ITarget executor, ITarget enemy);
-
+        ITarget AutoSelectTarget(Character character, IAbilityToken ability, IList<ITarget> enemiesOfCharacter);
     }
 }

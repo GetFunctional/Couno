@@ -3,18 +3,35 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Couno"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <StackPanel>
-        <ItemsControl ItemsSource="{Binding Nodes}" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <WrapPanel VerticalAlignment="Bottom">
+        <WrapPanel Grid.Row="0" Orientation="Vertical">
+            <TextBlock>
+                <Run Text="Health:" />
+                <Run Text="{Binding MyIdentity.Health, Mode=OneWay}" />
+            </TextBlock>
+            <TextBlock>
+                <Run Text="Block:" />
+                <Run Text="{Binding MyIdentity.Block, Mode=OneWay}" />
+            </TextBlock>
+        </WrapPanel>
+
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Nodes}" />
+
+
+        <WrapPanel Grid.Row="2" VerticalAlignment="Bottom">
             <Button Click="AddNode" Content="Add DamageNode" />
             <Button Click="AddBlockNode" Content="Add BlockNode" />
             <Button Click="Evaluate" Content="Evaluate" />
         </WrapPanel>
-    </StackPanel>
+    </Grid>
 </UserControl>

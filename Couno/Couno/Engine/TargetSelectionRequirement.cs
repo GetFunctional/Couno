@@ -1,6 +1,6 @@
 ﻿namespace Couno.Engine
 {
-    internal enum TargetSelectionRequirement
+    public enum TargetSelectionRequirement
     {
         NoTargetRequired = 0,
         EnemyTargetSelectionRequired = 1,
