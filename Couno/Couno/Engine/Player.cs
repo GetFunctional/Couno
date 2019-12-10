@@ -2,9 +2,8 @@
 {
     public class Player : TargetBase
     {
-        public Player()
+        public Player() : base(200)
         {
-            this.Health = 200;
         }
 
       

@@ -2,9 +2,8 @@
 {
     public class Enemy : TargetBase
     {
-        public Enemy()
+        public Enemy() : base(160)
         {
-            this.Health = 160;
         }
     }
 }

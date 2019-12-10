@@ -16,15 +16,22 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
-        <ItemsControl ItemsSource="{Binding Nodes}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <WrapPanel Grid.Row="1">
-            <Button Click="AddNode" Content="Add Node" />
-            <Button Click="Evaluate" Content="Evaluate" />
-        </WrapPanel>
+        <local:FighterView
+            x:Name="Player"
+            Grid.Row="1"
+            Grid.Column="0" />
 
+        <local:FighterView
+            x:Name="Enemy"
+            Grid.Row="1"
+            Grid.Column="1" />
 
-        <ScrollViewer Grid.Row="2">
+        <ScrollViewer Grid.Row="2" Grid.ColumnSpan="2">
             <TextBox
                 x:Name="OutputConsole"
                 HorizontalAlignment="Stretch"

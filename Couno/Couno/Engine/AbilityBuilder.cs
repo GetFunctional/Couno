@@ -24,5 +24,18 @@
 
             return abilityToken;
         }
+
+        public IAbilityToken CreateBlockAbility(int baseBlock, IAbilityToken ancestor, IAbilityToken descendant)
+        {
+            var ability = new Ability("Block", AbilityType.Block, baseBlock);
+            var abilityToken = new AbilityToken(ability, ancestor, descendant);
+            
+            if (ancestor is AbilityToken at)
+            {
+                at.IntroduceDescendant(abilityToken);
+            }
+
+            return abilityToken;
+        }
     }
 }
