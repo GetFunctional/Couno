@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Windows.Markup;
 
 namespace Couno.Engine
 {
@@ -23,7 +24,7 @@ namespace Couno.Engine
             }
         }
 
-        public ITarget AutoSelectTarget(IAbilityToken abilityAction, ICounoFightEnvironment fight)
+        public ITarget AutoSelectTarget(IAbilityToken abilityAction, ITarget executor, IList<ITarget> enemies)
         {
             switch (abilityAction.Ability.AbilityType)
             {
@@ -32,25 +33,30 @@ namespace Couno.Engine
                 case AbilityType.None:
                     return null;
                 case AbilityType.Attack:
-                    return fight.Enemy;
+                    return enemies.First();
                 case AbilityType.Block:
-                    return fight.Player;
+                    return executor;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        public ResolveResult Resolve(IAbilityToken abilityAction, ICounoFightEnvironment fight, ITarget target)
+        public ITarget AutoSelectTarget(IAbilityToken abilityAction, ITarget executor, ITarget enemy)
+        {
+            return AutoSelectTarget(abilityAction, executor, new List<ITarget>() {enemy});
+        }
+
+        public ResolveResult Resolve(IAbilityToken abilityAction, ITarget executor, ITarget target)
         {
             switch (abilityAction.Ability.AbilityType)
             {
                 case AbilityType.None:
                     break;
                 case AbilityType.Attack:
-                    return this.ResolveAttack(abilityAction, fight, target);
+                    return this.ResolveAttack(abilityAction, executor, target);
                     break;
                 case AbilityType.Block:
-                    return this.ResolveBlock(abilityAction, fight, target);
+                    return this.ResolveBlock(abilityAction, executor, target);
                     break;
                 case AbilityType.TakeAncestor:
                     break;
@@ -63,7 +69,7 @@ namespace Couno.Engine
             return new ResolveResult("Nothing to resolve");
         }
 
-        private ResolveResult ResolveBlock(IAbilityToken abilityAction, ICounoFightEnvironment fight, ITarget target)
+        private ResolveResult ResolveBlock(IAbilityToken abilityAction, ITarget executor, ITarget target)
         {
             var log = new StringBuilder($"Resolving ({abilityAction})");
             var blockAmount = abilityAction.Ability.Amount;
@@ -74,7 +80,7 @@ namespace Couno.Engine
             return new ResolveResult(log.ToString());
         }
 
-        private ResolveResult ResolveAttack(IAbilityToken abilityAction, ICounoFightEnvironment fight, ITarget target)
+        private ResolveResult ResolveAttack(IAbilityToken abilityAction, ITarget executor, ITarget target)
         {
             var log = new StringBuilder($"Resolving ({abilityAction})");
             var damageAmount = abilityAction.Ability.Amount;
