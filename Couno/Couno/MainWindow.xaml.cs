@@ -18,12 +18,8 @@ namespace Couno
             this.InitializeComponent();
             this.DataContext = this;
 
-            this.Player.Fight = this._fight;
-            this.Player.MyIdentity = this._fight.Player;
-
-            this.Enemy.Fight = this._fight;
-            this.Enemy.MyIdentity = this._fight.Enemy;
-
+            this.Player.InitializeFight(_fight, _fight.Player);
+            this.Enemy.InitializeFight(_fight, _fight.Enemy);
         }
     }
 }

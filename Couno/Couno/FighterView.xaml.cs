@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using Couno.Engine;
@@ -9,9 +11,10 @@ namespace Couno
     /// <summary>
     ///     Interaction logic for FighterView.xaml
     /// </summary>
-    public partial class FighterView : UserControl
+    public partial class FighterView : UserControl, INotifyPropertyChanged
     {
         private readonly AbilityBuilder _abilityBuilder = new AbilityBuilder();
+        private bool _itsMyTurn;
 
         public FighterView()
         {
@@ -20,11 +23,34 @@ namespace Couno
             this.Nodes = new ObservableCollection<AbilityTokenViewModel>();
         }
 
-        public ICounoFightEnvironment Fight { get; set; }
+        public void InitializeFight(ICounoFightEnvironment fight, Character myIdentity)
+        {
+            this.Fight = fight;
+            this.MyIdentity = myIdentity;
+            this.ItsMyTurn = Fight.IsItMyTurn(myIdentity);
+            this.Fight.ActiveCharacterChanged += FightOnActiveCharacterChanged;
+        }
 
-        public Character MyIdentity { get; set; }
+        private void FightOnActiveCharacterChanged(object sender, ActiveCharacterChangedEventArgs e)
+        {
+            this.ItsMyTurn = Fight.IsItMyTurn(this.MyIdentity);
+        }
+
+        public ICounoFightEnvironment Fight { get; private set; }
+
+        public Character MyIdentity { get; private set; }
 
         public ObservableCollection<AbilityTokenViewModel> Nodes { get; }
+
+        public bool ItsMyTurn
+        {
+            get => _itsMyTurn;
+            set
+            {
+                _itsMyTurn = value;
+                RaisePropertyChanged();
+            }
+        }
 
         private void AddNode(object sender, RoutedEventArgs e)
         {
@@ -47,6 +73,8 @@ namespace Couno
                 var target = this.Fight.AutoSelectTargetForAction(this.MyIdentity, abilityAction);
                 var log = this.Fight.ResolveAbility(this.MyIdentity, abilityAction, target);
             }
+
+            this.Fight.FinishTurn(MyIdentity);
         }
 
 
@@ -56,6 +84,13 @@ namespace Couno
             var blockAbility = this._abilityBuilder.CreateBlockAbility(6, lastAddedNode?.AbilityToken, null);
             var nodeViewModel = new AbilityTokenViewModel(blockAbility);
             this.Nodes.Add(nodeViewModel);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

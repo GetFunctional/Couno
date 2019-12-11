@@ -65,6 +65,7 @@
     <Compile Include="Engine\AbilityBuilder.cs" />
     <Compile Include="Engine\AbilityToken.cs" />
     <Compile Include="Engine\AbilityType.cs" />
+    <Compile Include="Engine\ActiveCharacterChangedEventArgs.cs" />
     <Compile Include="Engine\IAbilityActionQueueResolver.cs" />
     <Compile Include="Engine\IAbilityToken.cs" />
     <Compile Include="Engine\Character.cs" />
