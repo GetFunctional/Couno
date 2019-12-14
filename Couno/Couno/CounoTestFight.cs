@@ -22,6 +22,11 @@ namespace Couno
         public event EventHandler<ActiveCharacterChangedEventArgs> ActiveCharacterChanged;
         public Character Player { get; }
 
+        public IReadOnlyList<IAbilityToken> GetTokensFromStreamLine( ResourceStreamLine resourceStreamLine)
+        {
+            return resourceStreamLine.ExtractAbilities().ToList();
+        }
+
         public TargetSelectionRequirement GetTargetSelectionRequirementForAction(Character character,
             IAbilityToken ability)
         {

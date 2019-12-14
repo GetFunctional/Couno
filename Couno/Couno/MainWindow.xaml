@@ -8,6 +8,7 @@
     Title="MainWindow"
     Width="800"
     Height="450"
+    d:DataContext="{d:DesignInstance Type={x:Type local:CounoFightViewModel}}"
     mc:Ignorable="d">
 
     <Grid>
@@ -23,12 +24,14 @@
         <local:FighterView
             x:Name="Player"
             Grid.Row="0"
-            Grid.Column="0" />
+            Grid.Column="0"
+            DataContext="{Binding Player}" />
 
         <local:FighterView
             x:Name="Enemy"
             Grid.Row="0"
-            Grid.Column="1" />
+            Grid.Column="1"
+            DataContext="{Binding Enemy}" />
 
         <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
             <TextBox

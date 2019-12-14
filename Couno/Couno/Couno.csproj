@@ -58,6 +58,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AbilityTokenViewModel.cs" />
+    <Compile Include="CounoFightViewModel.cs" />
     <Compile Include="CounoTestFight.cs" />
     <Compile Include="Engine\Ability.cs" />
     <Compile Include="Engine\AbilityActionQueueResolver.cs" />
@@ -66,19 +67,40 @@
     <Compile Include="Engine\AbilityToken.cs" />
     <Compile Include="Engine\AbilityType.cs" />
     <Compile Include="Engine\ActiveCharacterChangedEventArgs.cs" />
+    <Compile Include="Engine\CounoEngine.cs" />
     <Compile Include="Engine\IAbilityActionQueueResolver.cs" />
     <Compile Include="Engine\IAbilityToken.cs" />
     <Compile Include="Engine\Character.cs" />
     <Compile Include="Engine\ICounoFightEnvironment.cs" />
+    <Compile Include="Engine\IResourceStreamlineElement.cs" />
     <Compile Include="Engine\Item.cs" />
     <Compile Include="Engine\ResolveResult.cs" />
+    <Compile Include="Engine\ResourceElementFactory.cs" />
+    <Compile Include="Engine\ResourceGenerator.cs" />
+    <Compile Include="Engine\ResourceStreamLine.cs" />
+    <Compile Include="Engine\ResourceStreamlineGraph.cs" />
+    <Compile Include="Engine\ResourceType.cs" />
     <Compile Include="Engine\TargetBase.cs" />
     <Compile Include="Engine\TargetSelectionRequirement.cs" />
     <Compile Include="Engine\ITarget.cs" />
+    <Compile Include="Engine\TokenBoard.cs" />
+    <Compile Include="Engine\TokenBoardLayout.cs" />
     <Compile Include="FighterView.xaml.cs">
       <DependentUpon>FighterView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FighterViewModel.cs" />
+    <Compile Include="Shared\Mvvm\CommandBase.cs" />
+    <Compile Include="Shared\Mvvm\CommandBase.Generic.cs" />
+    <Compile Include="Shared\Mvvm\ICommand.cs" />
+    <Compile Include="Shared\Mvvm\IDelegateCommand.cs" />
+    <Compile Include="Shared\Mvvm\ObservableObject.cs" />
     <Compile Include="Shared\CodeGuard.cs" />
+    <Compile Include="Shared\EnumerableExtensions.cs" />
+    <Compile Include="Shared\ObjectExtensions.cs" />
+    <Compile Include="Shared\TypeCastExtension.cs" />
+    <Compile Include="StreamlineViewModel.cs" />
+    <Compile Include="TokenBoardViewModel.cs" />
+    <Compile Include="ViewModelBase.cs" />
     <Page Include="FighterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

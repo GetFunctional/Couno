@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Couno.Engine
 {
@@ -12,7 +11,10 @@ namespace Couno.Engine
         public Character(int health, IList<Item> items) : base(health)
         {
             this.Items = items;
+            this.Engine = new CounoEngine(new ResourceElementFactory());
         }
+
+        public CounoEngine Engine { get; }
 
         private IList<Item> Items { get; }
     }
