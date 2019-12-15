@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Couno.Shared;
 
 namespace Couno.Engine
@@ -82,6 +83,21 @@ namespace Couno.Engine
                 this._allElements.Add(elementToConnect);
                 this._elementParents.Add(elementToConnect, new HashSet<IResourceStreamlineElement>());
                 this._elementChildren.Add(elementToConnect, new HashSet<IResourceStreamlineElement>());
+            }
+        }
+
+        public void ResolveStreamline(ResourceStreamLine streamline)
+        {
+            var level = 0;
+            while (true)
+            {
+                var resourcesLeft = streamline.
+                var elementsOnLevel = GetElementsOnLevel(level);
+                if (!elementsOnLevel.Any())
+                {
+                    return;
+                }
+                
             }
         }
     }

@@ -7,5 +7,6 @@
         Block = 2,
         TakeAncestor = 3,
         TakeDescendant = 4,
+        AddResource = 5,
     }
 }

@@ -64,8 +64,9 @@ namespace Couno
         public void ExecuteStreamline(ResourceStreamLine streamline, Character executingCharacter)
         {
             var enemy = this.GetEnemyOf(executingCharacter).FirstOrDefault();
-            var actions = streamline.ExtractAbilities();
-            actions.ForEach(ab => ResolveAbility(executingCharacter, ab, enemy));
+            var actions = executingCharacter.Engine.StreamlineGraph.ResolveStreamline(streamline);
+            //streamline. streamline.ExtractAbilities();
+            //actions.ForEach(ab => ResolveAbility(executingCharacter, ab, enemy));
         }
 
         private void ChangeActiveCharacter(Character character)
