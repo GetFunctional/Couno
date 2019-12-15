@@ -1,31 +1,17 @@
-﻿using System;
-using System.ComponentModel;
-using Couno.Shared;
-
-namespace Couno.Engine
+﻿namespace Couno.Engine
 {
     public sealed class AbilityToken : IAbilityToken
     {
-        public AbilityToken(Ability ability, IAbilityToken ancestor, IAbilityToken descendant)
+        public AbilityToken(Ability ability)
         {
             this.Ability = ability;
-            this.Ancestor = ancestor;
-            this.Descendant = descendant;
         }
 
-        public IAbilityToken Ancestor { get; }
-        public IAbilityToken Descendant { get; private set; }
-        public void IntroduceDescendant(IAbilityToken descendant)
-        {
-            if (this.Descendant != null)
-            {
-                throw new InvalidOperationException("Already has a descendant");
-            }
-
-            this.Descendant = descendant;
-        }
+        #region IAbilityToken Members
 
         public Ability Ability { get; }
+
+        #endregion
 
         public override string ToString()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Couno.Shared;
 
 namespace Couno.Engine
 {
@@ -23,6 +24,12 @@ namespace Couno.Engine
         public IEnumerable<IAbilityToken> ExtractAbilities()
         {
             return this.TokenSlots;
+        }
+
+        public void ReplaceAbilities(IEnumerable<IAbilityToken> currentConfiguration)
+        {
+            this.TokenSlots.Clear();
+            currentConfiguration.ForEach(x => this.TokenSlots.AddLast(x));
         }
 
         public override string ToString()

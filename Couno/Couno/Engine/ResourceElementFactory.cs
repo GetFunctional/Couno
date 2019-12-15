@@ -23,7 +23,13 @@
             streamlineGraph.AddElement(greenStreamLine, this.CreateResourceGenerator(ResourceType.Green, 6));
             streamlineGraph.AddElement(blueStreamLine, this.CreateResourceGenerator(ResourceType.Blue, 6));
 
+            streamlineGraph.AddElement(redStreamLine, this.CreateAbilitySocket(4));
             return streamlineGraph;
+        }
+
+        private IResourceStreamlineElement CreateAbilitySocket(int amountOfSockets)
+        {
+            return new TokenBoard(new TokenBoardLayout(amountOfSockets));
         }
     }
 }

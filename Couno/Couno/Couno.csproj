@@ -58,11 +58,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AbilityTokenViewModel.cs" />
+    <Compile Include="ConfigureBoardView.xaml.cs">
+      <DependentUpon>ConfigureBoardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigureBoardViewModel.cs" />
     <Compile Include="CounoFightViewModel.cs" />
     <Compile Include="CounoTestFight.cs" />
     <Compile Include="Engine\Ability.cs" />
     <Compile Include="Engine\AbilityActionQueueResolver.cs" />
-    <Compile Include="Engine\AbilityActionsQueue.cs" />
     <Compile Include="Engine\AbilityBuilder.cs" />
     <Compile Include="Engine\AbilityToken.cs" />
     <Compile Include="Engine\AbilityType.cs" />
@@ -89,8 +92,12 @@
       <DependentUpon>FighterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="FighterViewModel.cs" />
+    <Compile Include="ResourceGeneratorViewModel.cs" />
+    <Compile Include="ResourceStreamlineElementViewModel.cs" />
     <Compile Include="Shared\Mvvm\CommandBase.cs" />
     <Compile Include="Shared\Mvvm\CommandBase.Generic.cs" />
+    <Compile Include="Shared\Mvvm\DelegateCommand.Generic.cs" />
+    <Compile Include="Shared\Mvvm\DelegateCommandBase.cs" />
     <Compile Include="Shared\Mvvm\ICommand.cs" />
     <Compile Include="Shared\Mvvm\IDelegateCommand.cs" />
     <Compile Include="Shared\Mvvm\ObservableObject.cs" />
@@ -100,7 +107,16 @@
     <Compile Include="Shared\TypeCastExtension.cs" />
     <Compile Include="StreamlineViewModel.cs" />
     <Compile Include="TokenBoardViewModel.cs" />
+    <Compile Include="TokenFactory.cs" />
+    <Compile Include="TokenSelectorViewModel.cs" />
+    <Compile Include="TokenSelectorWindow.xaml.cs">
+      <DependentUpon>TokenSelectorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModelBase.cs" />
+    <Page Include="ConfigureBoardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FighterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +135,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TokenSelectorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

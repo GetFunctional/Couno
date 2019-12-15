@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using Couno.Engine;
+using Couno.Shared.Mvvm;
 
 namespace Couno
 {
@@ -24,7 +26,18 @@ namespace Couno
         {
             var streamlines = engine.StreamlineGraph.Streamlines;
 
-            return streamlines.Select(x => new StreamlineViewModel(x));
+            return streamlines.Select(x => new StreamlineViewModel(x,new DelegateCommand<StreamlineViewModel>(ExecuteStreamline)));
+        }
+
+        private void ExecuteStreamline(StreamlineViewModel streamline)
+        {
+            this._fight.ExecuteStreamline(streamline.StreamLine, this.Me);
+            streamline.CanExecute = false;
+
+            if (this.Streamlines.All(x => !x.CanExecute))
+            {
+                this._fight.FinishTurn(this.Me);
+            }
         }
 
 
@@ -50,6 +63,10 @@ namespace Couno
         private void RefreshIsItMyTurn()
         {
             this.ItsMyTurn = this._fight.IsItMyTurn(this.Me);
+            foreach (var streamlineViewModel in this.Streamlines)
+            {
+                streamlineViewModel.CanExecute = this._fight.IsItMyTurn(this.Me);
+            }
         }
 
         //private void AddNode(object sender, RoutedEventArgs e)

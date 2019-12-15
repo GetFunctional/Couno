@@ -40,7 +40,7 @@ namespace Couno.Engine
                     throw new ArgumentOutOfRangeException();
             }
         }
-        
+
         public ResolveResult Resolve(Character character, IAbilityToken ability, IList<ITarget> targets)
         {
             switch (ability.Ability.AbilityType)
@@ -50,7 +50,7 @@ namespace Couno.Engine
                 case AbilityType.Attack:
                     return this.ResolveAttack(character, ability, targets);
                 case AbilityType.Block:
-                    return this.ResolveBlock(character, ability, targets);
+                    return this.ResolveBlock(character, ability);
                 case AbilityType.TakeAncestor:
                     break;
                 case AbilityType.TakeDescendant:
@@ -62,17 +62,13 @@ namespace Couno.Engine
             return new ResolveResult("Nothing to resolve");
         }
 
-        private ResolveResult ResolveBlock(Character character, IAbilityToken ability, IList<ITarget> targets)
+        private ResolveResult ResolveBlock(Character character, IAbilityToken ability)
         {
             var log = new StringBuilder($"Resolving ({ability})");
             var blockAmount = ability.Ability.Amount;
 
-            foreach (var target in targets)
-            {
-                target.AddBlock(blockAmount);
-                log.AppendLine($"Target gained block for {blockAmount}. {target.Block} remaining.");
-            }
-            
+            character.AddBlock(blockAmount);
+            log.AppendLine($"Target gained block for {blockAmount}.{character.Block} remaining.");
 
             return new ResolveResult(log.ToString());
         }

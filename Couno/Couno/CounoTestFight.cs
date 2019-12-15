@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Couno.Engine;
+using Couno.Shared;
 
 namespace Couno
 {
@@ -51,7 +52,6 @@ namespace Couno
 
         public void FinishTurn(Character character)
         {
-
             var enemyOfCharacter = GetEnemyOf(character);
             this.StartTurn(enemyOfCharacter.FirstOrDefault());
         }
@@ -59,6 +59,13 @@ namespace Couno
         public bool IsItMyTurn(Character character)
         {
             return this.CurrentActiveCharacter == character;
+        }
+
+        public void ExecuteStreamline(ResourceStreamLine streamline, Character executingCharacter)
+        {
+            var enemy = this.GetEnemyOf(executingCharacter).FirstOrDefault();
+            var actions = streamline.ExtractAbilities();
+            actions.ForEach(ab => ResolveAbility(executingCharacter, ab, enemy));
         }
 
         private void ChangeActiveCharacter(Character character)

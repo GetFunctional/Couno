@@ -16,5 +16,6 @@ namespace Couno.Engine
         void StartTurn(Character character);
         void FinishTurn(Character character);
         bool IsItMyTurn(Character character);
+        void ExecuteStreamline(ResourceStreamLine streamline, Character executingCharacter);
     }
 }

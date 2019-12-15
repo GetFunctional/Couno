@@ -26,6 +26,7 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
+                    <Button Command="{Binding ConfigureBoardCommand}" Content="Configure" />
                 </WrapPanel>
             </Border>
         </DataTemplate>
@@ -37,13 +38,19 @@
                     VerticalAlignment="Stretch"
                     BorderBrush="Red"
                     BorderThickness="1,0,0,0" />
-                <ItemsControl ItemTemplate="{StaticResource TokenBoardTemplate}" ItemsSource="{Binding TokenBoards}">
+                <ItemsControl ItemTemplate="{StaticResource TokenBoardTemplate}" ItemsSource="{Binding StreamlineElements}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Vertical" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
+                <Button
+                    VerticalAlignment="Bottom"
+                    Command="{Binding UseStreamlineCommand}"
+                    CommandParameter="{Binding}"
+                    Content="Use"
+                    IsEnabled="{Binding CanExecute}" />
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
