@@ -1,0 +1,21 @@
+﻿<Window
+    x:Class="CounoGame.UI.Content.ShellWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:catel="http://schemas.catelproject.com"
+    xmlns:content="clr-namespace:CounoGame.UI.Content"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fightViews="clr-namespace:CounoGame.UI.Content.FightViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Couno"
+    Width="800"
+    Height="450"
+    d:DataContext="{d:DesignInstance Type={x:Type content:ShellViewModel}}"
+    mc:Ignorable="d">
+
+
+    <Grid>
+        <fightViews:FightView DataContext="{Binding FightViewModel, Mode=OneTime}" />
+    </Grid>
+
+</Window>

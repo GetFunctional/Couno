@@ -1,0 +1,19 @@
+﻿<UserControl
+    x:Class="CounoGame.UI.Content.FightViews.FightView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cardViews="clr-namespace:CounoGame.UI.Content.CardViews"
+    xmlns:counoGame="clr-namespace:CounoGame"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CounoGame.UI.Content.FightViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type={x:Type local:FightViewModel}}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid>
+
+
+        <cardViews:HandCardsView VerticalAlignment="Bottom" DataContext="{Binding HandCardsViewModel, Mode=OneTime}" />
+    </Grid>
+</UserControl>

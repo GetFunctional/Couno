@@ -1,0 +1,17 @@
+﻿<UserControl
+    x:Class="CounoGame.UI.Content.CardViews.CardView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:content="clr-namespace:CounoGame.UI.Content"
+    xmlns:counoGame="clr-namespace:CounoGame"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CounoGame.UI.Content.CardViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type={x:Type local:CardViewModel}}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid>
+        <TextBlock Text="{Binding Name}" />
+    </Grid>
+</UserControl>
