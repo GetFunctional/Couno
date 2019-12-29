@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CounoGame", "CounoGame\CounoGame.csproj", "{CD9977AA-0C93-4E20-9866-9269C92C11CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.Couno.Core", "GF.Couno.Core\GF.Couno.Core.csproj", "{62E8F788-C204-4859-A233-EEE0C6123690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.Couno.Core.Unittests", "GF.Couno.Core.Unittests\GF.Couno.Core.Unittests.csproj", "{A35FC07E-EDDF-4A3D-9EE9-37355C5B52E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{CD9977AA-0C93-4E20-9866-9269C92C11CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD9977AA-0C93-4E20-9866-9269C92C11CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD9977AA-0C93-4E20-9866-9269C92C11CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62E8F788-C204-4859-A233-EEE0C6123690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E8F788-C204-4859-A233-EEE0C6123690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E8F788-C204-4859-A233-EEE0C6123690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E8F788-C204-4859-A233-EEE0C6123690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A35FC07E-EDDF-4A3D-9EE9-37355C5B52E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A35FC07E-EDDF-4A3D-9EE9-37355C5B52E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A35FC07E-EDDF-4A3D-9EE9-37355C5B52E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A35FC07E-EDDF-4A3D-9EE9-37355C5B52E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
