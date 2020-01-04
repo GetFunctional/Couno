@@ -8,9 +8,9 @@ namespace GF.Couno.Core.CardSysten
     {
         public CardCost(IEnumerable<PowerResource> resourceCost)
         {
-            this.ResourceCost = resourceCost.ToList();
+            this.TotalResourceCost = new PowerResources(resourceCost);
         }
 
-        public IReadOnlyList<PowerResource> ResourceCost { get; }
+        public PowerResources TotalResourceCost { get; }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="FightSystemTests\PlayerFightParticipantTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FightSystemTests\FightTests.cs" />
+    <Compile Include="ResourceSystem\PowerResourcesTests.cs" />
     <Compile Include="ResourceSystem\PowerResourceTests.cs" />
   </ItemGroup>
   <ItemGroup>
