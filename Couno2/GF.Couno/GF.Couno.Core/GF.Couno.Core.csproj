@@ -41,8 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardEffect.cs" />
+    <Compile Include="CardSysten\CardCost.cs" />
+    <Compile Include="CardSysten\Card.cs" />
+    <Compile Include="CardSysten\CardEffect.cs" />
+    <Compile Include="EffectSystem\EffectType.cs" />
+    <Compile Include="Extensions\CodeGuard.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\TypeCastExtension.cs" />
+    <Compile Include="FightSystem\Ai\AiFightParticipant.cs" />
+    <Compile Include="FightSystem\Fight.cs" />
+    <Compile Include="FightSystem\IFightParticipant.cs" />
+    <Compile Include="FightSystem\Player\PlayerFightParticipant.cs" />
+    <Compile Include="ResourceSystem\PowerColor.cs" />
+    <Compile Include="ResourceSystem\PowerResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceSystem\PowerResourceExtensions.cs" />
+    <Compile Include="ResourceSystem\PowerResources.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
