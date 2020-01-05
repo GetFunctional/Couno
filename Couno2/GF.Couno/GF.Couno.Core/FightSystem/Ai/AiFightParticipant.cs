@@ -1,24 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GF.Couno.Core.ResourceSystem;
+﻿using GF.Couno.Core.FightSystem.Player;
 
 namespace GF.Couno.Core.FightSystem.Ai
 {
-    public sealed class AiFightParticipant : IFightParticipant
+    public sealed class AiFightParticipant : FightParticipantBase
     {
-        public AiFightParticipant() : this(new PowerResources())
-        {
-
-        }
-
-        public AiFightParticipant(PowerResources powerResources)
-        {
-            this.PowerResources = powerResources;
-        }
-
-        public PowerResources PowerResources { get; }
     }
 }
