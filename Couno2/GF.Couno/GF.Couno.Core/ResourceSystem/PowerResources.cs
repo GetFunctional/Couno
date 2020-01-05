@@ -32,20 +32,35 @@ namespace GF.Couno.Core.ResourceSystem
             }
         }
 
-        private void AddResources(IEnumerable<PowerResource> resources)
+        public void AddResources(IEnumerable<PowerResource> resources)
         {
-            foreach (var availablePowerColor in resources.GroupBy(x => x.PowerColor))
+            foreach (var power in resources.GroupBy(x => x.PowerColor))
             {
-                this.AddResourceInternal(new PowerResource(availablePowerColor.Sum(x => x.Amount),
-                    availablePowerColor.Key));
+                this.UpdateResourceInternal(new PowerResource(power.Sum(x => x.Amount),
+                    power.Key));
             }
         }
 
-        private void AddResourceInternal(PowerResource resource)
+        public void RemoveResources(IEnumerable<PowerResource> resources)
+        {
+            foreach (var power in resources.GroupBy(x => x.PowerColor))
+            {
+                this.UpdateResourceInternal(new PowerResource(power.Sum(x => -x.Amount),
+                    power.Key));
+            }
+        }
+
+        private void UpdateResourceInternal(PowerResource resource)
         {
             CheckResourceColor(resource.PowerColor);
 
             var currentValue = this._availableResources.GetOrAdd(resource.PowerColor, this.CreateDefault);
+            var newValue = currentValue.MergeResources(resource);
+            if (newValue.Amount < 0)
+            {
+                throw new InvalidOperationException("Value cannot be negative");
+            }
+
             if (!this._availableResources.TryUpdate(resource.PowerColor, currentValue.MergeResources(resource),
                 currentValue))
             {
@@ -82,6 +97,12 @@ namespace GF.Couno.Core.ResourceSystem
         {
             this.AddResources(new[] {resource});
         }
+
+        public void RemoveResource(PowerResource resource)
+        {
+            this.RemoveResources(new[] {resource});
+        }
+
 
         public bool HasResource(PowerColor color)
         {

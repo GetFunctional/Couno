@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GF.Couno.Core.FightSystem.Shared;
 
 namespace GF.Couno.Core.FightSystem.Player
 {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GF.Couno.Core.Extensions;
 
 namespace GF.Couno.Core.CardSysten
 {

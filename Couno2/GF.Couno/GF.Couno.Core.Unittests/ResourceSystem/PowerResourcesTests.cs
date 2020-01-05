@@ -16,7 +16,7 @@ namespace GF.Couno.Core.Unittests.ResourceSystem
         };
 
         [Test]
-        public void PowerResource_CreationWithDistinctValues2_Tests()
+        public void PowerResource_CreationWithDistinctValues2_Works()
         {
             // Arrange 
             var distinctPowerResources = new List<PowerResource>
@@ -40,7 +40,7 @@ namespace GF.Couno.Core.Unittests.ResourceSystem
         }
 
         [Test]
-        public void PowerResource_CreationWithNonDistinctValues1_Tests()
+        public void PowerResource_CreationWithNonDistinctValues1_ShouldMerge()
         {
             // Arrange 
             var distinctPowerResources = new List<PowerResource>
@@ -61,9 +61,38 @@ namespace GF.Couno.Core.Unittests.ResourceSystem
             Assert.That(powerResource.HasResource(PowerColor.Black), Is.EqualTo(true));
         }
 
+        [Test]
+        public void PowerResources_AddingResource_AddsResource()
+        {
+            // Arrange
+            var powerResource = new PowerResources(this.DistinctPowerResources);
+
+            // Act
+            powerResource.AddResource(new PowerResource(4, PowerColor.Blue));
+
+            // Assert
+            Assert.That(powerResource.HasResource(PowerColor.Blue), Is.True);
+            Assert.That(powerResource.AvailableAmountOf(PowerColor.Blue), Is.EqualTo(4));
+        }
 
         [Test]
-        public void PowerResources_CreationWithDistinctValues_Tests()
+        public void PowerResources_RemovingResource_RemovesResource()
+        {
+            // Arrange
+            var powerResource = new PowerResources(this.DistinctPowerResources);
+
+            // Act
+            powerResource.AddResource(new PowerResource(4, PowerColor.Blue));
+            powerResource.RemoveResource(new PowerResource(3, PowerColor.Blue));
+
+            // Assert
+            Assert.That(powerResource.HasResource(PowerColor.Blue), Is.True);
+            Assert.That(powerResource.AvailableAmountOf(PowerColor.Blue), Is.EqualTo(1));
+        }
+
+
+        [Test]
+        public void PowerResources_CreationWithDistinctValues_Works()
         {
             // Arrange + Act
             var powerResource = new PowerResources(this.DistinctPowerResources);

@@ -44,6 +44,7 @@
     <Compile Include="CardSysten\CardCost.cs" />
     <Compile Include="CardSysten\Card.cs" />
     <Compile Include="CardSysten\CardEffect.cs" />
+    <Compile Include="CardSysten\Cards.cs" />
     <Compile Include="EffectSystem\EffectType.cs" />
     <Compile Include="EffectSystem\LastingEffect.cs" />
     <Compile Include="EffectSystem\LastingEffectExtensions.cs" />
@@ -55,8 +56,9 @@
     <Compile Include="FightSystem\Ai\AiFightParticipant.cs" />
     <Compile Include="FightSystem\Fight.cs" />
     <Compile Include="FightSystem\IFightParticipant.cs" />
-    <Compile Include="FightSystem\Player\FightParticipantBase.cs" />
+    <Compile Include="FightSystem\Shared\FightParticipantBase.cs" />
     <Compile Include="FightSystem\Player\PlayerFightParticipant.cs" />
+    <Compile Include="FightSystem\Shared\ParticipantCards.cs" />
     <Compile Include="ResourceSystem\PowerColor.cs" />
     <Compile Include="ResourceSystem\PowerResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
