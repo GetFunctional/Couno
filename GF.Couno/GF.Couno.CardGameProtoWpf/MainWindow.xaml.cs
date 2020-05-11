@@ -23,6 +23,7 @@ namespace GF.Couno.CardGameProtoWpf
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
         }
     }
 }

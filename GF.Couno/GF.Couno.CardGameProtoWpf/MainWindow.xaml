@@ -9,5 +9,13 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid />
+    <Grid>
+
+        <!--
+            apexDragAndDrop:DragAndDrop.IsDragSource="True"
+            apexDragAndDrop:DragAndDrop.IsDropTarget="True"
+        -->
+        <ItemsControl Background="Transparent" ItemsSource="{Binding Cards}" />
+
+    </Grid>
 </Window>
