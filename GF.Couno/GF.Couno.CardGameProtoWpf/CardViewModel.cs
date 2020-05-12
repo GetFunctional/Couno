@@ -1,13 +1,13 @@
-﻿using System;
-using GF.Couno.CardGameProto;
+﻿using GF.Couno.CardGameProto;
 
 namespace GF.Couno.CardGameProtoWpf
 {
     public class CardViewModel
     {
-        public CardViewModel(Card card)
+        public CardViewModel(Card card, string fileName)
         {
             Card = card;
+            FileName = fileName;
             this.Name = card.ToString();
         }
 
@@ -19,5 +19,7 @@ namespace GF.Couno.CardGameProtoWpf
         {
             return Name;
         }
+
+        public string FileName { get; }
     }
 }

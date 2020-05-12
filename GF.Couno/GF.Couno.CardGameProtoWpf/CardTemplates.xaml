@@ -1,0 +1,46 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:GF.Couno.CardGameProtoWpf">
+
+    <DataTemplate DataType="{x:Type solitaireGames:PlayingCard}">
+        <Border
+            Width="140"
+            Height="190"
+            BorderThickness="1"
+            CornerRadius="6"
+            Cursor="Hand">
+            <!--apexDragAndDrop:DragAndDrop.IsDraggable="True"
+            apexCommands:ExtendedCommands.RightClickCommand="{Binding RelativeSource={RelativeSource
+            FindAncestor, AncestorType={x:Type UserControl}}, Path=ViewModel.RightClickCardCommand}"
+            apexCommands:ExtendedCommands.RightClickCommandParameter="{Binding }">
+            <apexCommands:EventBindings.EventBindings>-->
+            <!--<apexCommands:EventBindingCollection>
+                    <apexCommands:EventBinding
+                        EventName="MouseLeftButtonUp"
+                        Command="{Binding RelativeSource={RelativeSource
+            FindAncestor, AncestorType={x:Type UserControl}}, Path=ViewModel.LeftClickCardCommand}" CommandParameter="{Binding}" />
+                </apexCommands:EventBindingCollection>
+            </apexCommands:EventBindings.EventBindings>-->
+            <Border.Background>
+                <MultiBinding Converter="{StaticResource PlayingCardToBrushConverter}">
+                    <Binding Path="CardType" />
+                    <Binding Path="IsFaceDown" />
+                </MultiBinding>
+            </Border.Background>
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsFaceDown}" Value="True">
+                            <Setter Property="BorderBrush" Value="#00ffffff" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsFaceDown}" Value="False">
+                            <Setter Property="BorderBrush" Value="#ff666666" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>
