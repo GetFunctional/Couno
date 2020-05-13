@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,13 +20,13 @@ namespace GF.Couno.CardGameProto
             switch (color)
             {
                 case "R":
-                    return CreateCard(CardType.Red, value);
+                    return this.CreateCard(CardType.Red, value);
                 case "B":
-                    return CreateCard(CardType.Blue, value);
+                    return this.CreateCard(CardType.Blue, value);
                 case "Y":
-                    return CreateCard(CardType.Yellow, value);
+                    return this.CreateCard(CardType.Yellow, value);
                 case "G":
-                    return CreateCard(CardType.Green, value);
+                    return this.CreateCard(CardType.Green, value);
 
                 default:
                     throw new ArgumentException("color");
@@ -36,20 +35,20 @@ namespace GF.Couno.CardGameProto
 
         public IList<Card> CreateCardSequence(int amountOfCardsEachColor)
         {
-            var colors = new string[] { "R", "B", "Y", "G" };
+            var colors = new[] {"R", "B", "Y", "G"};
             var cardsToProduce = new List<string>();
 
             foreach (var color in colors)
             {
                 var cardValue = 1;
 
-                for (int cardNo = 0; cardNo < amountOfCardsEachColor; cardNo++)
+                for (var cardNo = 0; cardNo < amountOfCardsEachColor; cardNo++)
                 {
                     cardsToProduce.Add(color + cardValue++);
                 }
             }
 
-            return cardsToProduce.Select(CreateCard).ToList();
+            return cardsToProduce.Select(this.CreateCard).ToList();
         }
     }
 }

@@ -12,12 +12,12 @@ namespace GF.Couno.CardGameProtoWpf
 
         public CardImageSelector(string cardImageSourceLocationPackNotation)
         {
-            _cardImageSourceLocationPackNotation = cardImageSourceLocationPackNotation;
+            this._cardImageSourceLocationPackNotation = cardImageSourceLocationPackNotation;
         }
 
         public string GetPackNotationResourceFileName(Card card)
         {
-            var resourceFileName = $"{_cardImageSourceLocationPackNotation}{card.ToString()}.png";
+            var resourceFileName = $"{this._cardImageSourceLocationPackNotation}{card}.png";
             return resourceFileName;
         }
     }

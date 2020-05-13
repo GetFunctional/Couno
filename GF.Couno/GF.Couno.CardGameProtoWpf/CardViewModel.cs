@@ -6,8 +6,8 @@ namespace GF.Couno.CardGameProtoWpf
     {
         public CardViewModel(Card card, string fileName)
         {
-            Card = card;
-            FileName = fileName;
+            this.Card = card;
+            this.FileName = fileName;
             this.Name = card.ToString();
         }
 
@@ -15,11 +15,11 @@ namespace GF.Couno.CardGameProtoWpf
 
         public string Name { get; }
 
+        public string FileName { get; }
+
         public override string ToString()
         {
-            return Name;
+            return this.Name;
         }
-
-        public string FileName { get; }
     }
 }

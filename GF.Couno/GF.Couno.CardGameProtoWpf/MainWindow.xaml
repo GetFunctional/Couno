@@ -9,13 +9,17 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/GF.Couno.CardGameProtoWpf;component/CardTemplates.xaml" />
+    </Window.Resources>
     <Grid>
 
         <!--
             apexDragAndDrop:DragAndDrop.IsDragSource="True"
             apexDragAndDrop:DragAndDrop.IsDropTarget="True"
         -->
-        <ItemsControl Background="Transparent" ItemsSource="{Binding Cards}" />
+        <ItemsControl Background="Transparent" ItemTemplate="{StaticResource CardDataTemplate}"
+                      ItemsSource="{Binding Cards}" />
 
     </Grid>
 </Window>

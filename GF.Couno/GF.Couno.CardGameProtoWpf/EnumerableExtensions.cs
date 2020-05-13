@@ -13,7 +13,9 @@ namespace GF.Couno.CardGameProtoWpf
                 new[] {Enumerable.Empty<T>()};
             var result = emptyProduct;
             foreach (var sequence in sequences)
+            {
                 result = from accseq in result from item in sequence select accseq.Concat(new[] {item});
+            }
 
             return result;
         }
@@ -26,7 +28,10 @@ namespace GF.Couno.CardGameProtoWpf
         /// <param name="items">Neue Elemente</param>
         public static void AddRange<T>(this IList<T> list, IEnumerable<T> items)
         {
-            foreach (var item in items) list.Add(item);
+            foreach (var item in items)
+            {
+                list.Add(item);
+            }
         }
 
         public static T[] YieldToArray<T>(this T singleElement)
@@ -47,9 +52,15 @@ namespace GF.Couno.CardGameProtoWpf
 
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rng)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
 
-            if (rng == null) throw new ArgumentNullException("rng");
+            if (rng == null)
+            {
+                throw new ArgumentNullException("rng");
+            }
 
             return source.ShuffleIterator(rng);
         }
@@ -61,7 +72,10 @@ namespace GF.Couno.CardGameProtoWpf
 
         public static IEnumerable<T> YieldIfNotNull<T>(this T singleElement)
         {
-            if (singleElement != null) return new[] {singleElement};
+            if (singleElement != null)
+            {
+                return new[] {singleElement};
+            }
 
             return Enumerable.Empty<T>();
         }
@@ -78,17 +92,29 @@ namespace GF.Couno.CardGameProtoWpf
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
-            if (source == null) return;
+            if (source == null)
+            {
+                return;
+            }
 
-            foreach (var obj in source) action(obj);
+            foreach (var obj in source)
+            {
+                action(obj);
+            }
         }
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T, int> action)
         {
-            if (source == null) return;
+            if (source == null)
+            {
+                return;
+            }
 
             var num = 0;
-            foreach (var obj in source) action(obj, num++);
+            foreach (var obj in source)
+            {
+                action(obj, num++);
+            }
         }
 
         public static void ForEach<TFirst, TSecond>(this IEnumerable<TFirst> first, IEnumerable<TSecond> second,
@@ -99,7 +125,9 @@ namespace GF.Couno.CardGameProtoWpf
                 using (var enumerator2 = second.GetEnumerator())
                 {
                     while (enumerator1.MoveNext() && enumerator2.MoveNext())
+                    {
                         action(enumerator1.Current, enumerator2.Current);
+                    }
                 }
             }
         }

@@ -3,13 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:GF.Couno.CardGameProtoWpf">
 
-    <DataTemplate DataType="{x:Type solitaireGames:PlayingCard}">
+    <DataTemplate x:Key="CardDataTemplate" DataType="{x:Type local:CardViewModel}">
         <Border
             Width="140"
             Height="190"
             BorderThickness="1"
             CornerRadius="6"
-            Cursor="Hand">
+            Cursor="Hand"
+            Background="Brown">
             <!--apexDragAndDrop:DragAndDrop.IsDraggable="True"
             apexCommands:ExtendedCommands.RightClickCommand="{Binding RelativeSource={RelativeSource
             FindAncestor, AncestorType={x:Type UserControl}}, Path=ViewModel.RightClickCardCommand}"
@@ -22,12 +23,12 @@
             FindAncestor, AncestorType={x:Type UserControl}}, Path=ViewModel.LeftClickCardCommand}" CommandParameter="{Binding}" />
                 </apexCommands:EventBindingCollection>
             </apexCommands:EventBindings.EventBindings>-->
-            <Border.Background>
-                <MultiBinding Converter="{StaticResource PlayingCardToBrushConverter}">
-                    <Binding Path="CardType" />
-                    <Binding Path="IsFaceDown" />
-                </MultiBinding>
-            </Border.Background>
+            <!-- <Border.Background> -->
+            <!--     <MultiBinding Converter="{StaticResource PlayingCardToBrushConverter}"> -->
+            <!--         <Binding Path="CardType" /> -->
+            <!--         <Binding Path="IsFaceDown" /> -->
+            <!--     </MultiBinding> -->
+            <!-- </Border.Background> -->
             <Border.Style>
                 <Style TargetType="Border">
                     <Style.Triggers>

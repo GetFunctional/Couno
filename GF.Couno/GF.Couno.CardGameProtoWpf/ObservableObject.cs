@@ -25,11 +25,14 @@ namespace GF.Couno.CardGameProtoWpf
         /// <returns></returns>
         protected bool SetField<T>(ref T field, T value, string propertyName, Action changedCallback)
         {
-            if (AreEqual(ref field, value)) return false;
+            if (this.AreEqual(ref field, value))
+            {
+                return false;
+            }
 
-            RaisePropertyChanging(propertyName);
+            this.RaisePropertyChanging(propertyName);
             field = value;
-            RaisePropertyChanged(propertyName);
+            this.RaisePropertyChanged(propertyName);
 
             changedCallback?.Invoke();
             return true;
@@ -37,7 +40,7 @@ namespace GF.Couno.CardGameProtoWpf
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
-            return SetField(ref field, value, propertyName, null);
+            return this.SetField(ref field, value, propertyName, null);
         }
 
         protected bool AreEqual<T>(ref T field, T value)
@@ -54,11 +57,14 @@ namespace GF.Couno.CardGameProtoWpf
         {
             if (propertyNames == null || propertyNames.Length == 0)
             {
-                RaisePropertyChanging(string.Empty);
+                this.RaisePropertyChanging(string.Empty);
                 return;
             }
 
-            foreach (var propertyName in propertyNames) RaisePropertyChanging(propertyName);
+            foreach (var propertyName in propertyNames)
+            {
+                this.RaisePropertyChanging(propertyName);
+            }
         }
 
         protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
@@ -70,27 +76,40 @@ namespace GF.Couno.CardGameProtoWpf
         {
             if (propertyNames == null || propertyNames.Length == 0)
             {
-                RaisePropertyChanged(string.Empty);
+                this.RaisePropertyChanged(string.Empty);
                 return;
             }
 
-            foreach (var propertyName in propertyNames) RaisePropertyChanged(propertyName);
+            foreach (var propertyName in propertyNames)
+            {
+                this.RaisePropertyChanged(propertyName);
+            }
         }
 
         protected bool Set<T>(Action<T> setter, T oldvalue, T newvalue,
             [CallerMemberName] string propertyName = null)
         {
-            if (!Compare(oldvalue, newvalue)) return false;
+            if (!this.Compare(oldvalue, newvalue))
+            {
+                return false;
+            }
 
             setter(newvalue);
-            RaisePropertyChanged(propertyName);
+            this.RaisePropertyChanged(propertyName);
             return true;
         }
 
         protected bool Compare<T>(T value, T newvalue)
         {
-            if (ReferenceEquals(value, newvalue)) return false;
-            if (Equals(value, newvalue)) return false;
+            if (ReferenceEquals(value, newvalue))
+            {
+                return false;
+            }
+
+            if (Equals(value, newvalue))
+            {
+                return false;
+            }
 
             return true;
         }
