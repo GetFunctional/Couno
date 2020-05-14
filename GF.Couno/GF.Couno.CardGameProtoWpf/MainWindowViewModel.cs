@@ -1,28 +1,28 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using GF.Couno.CardGameProto;
+﻿using System.Collections.ObjectModel;
 
 namespace GF.Couno.CardGameProtoWpf
 {
     public class MainWindowViewModel : ObservableObject
     {
-        private readonly IList<Card> _availableCards;
-        private readonly CardFactory _cardFactory = new CardFactory();
-        private readonly CardImageSelector _cardImageSelector = new CardImageSelector();
+        #region - Konstruktoren -
 
         public MainWindowViewModel()
         {
-            this._availableCards = this._cardFactory.CreateCardSequence(7);
-            this.Cards = new ObservableCollection<CardViewModel>(this.CreateRandomCards(15, this._availableCards));
+            this.Player = new FighterHudViewModel(30,  "Player");
+            this.Enemy = new FighterHudViewModel(30, "AI");
+            this.FightProgress = new FightProgressViewModel(new[]{this.Player, this.Enemy});
         }
 
-        public ObservableCollection<CardViewModel> Cards { get; }
+        #endregion
 
-        private List<CardViewModel> CreateRandomCards(int amount, IList<Card> availableCards)
-        {
-            return availableCards.PickRandom(amount).Select(card =>
-                new CardViewModel(card, this._cardImageSelector.GetPackNotationResourceFileName(card))).ToList();
-        }
+        #region - Properties oeffentlich -
+
+        public FighterHudViewModel Enemy { get; set; }
+
+        public FighterHudViewModel Player { get; set; }
+
+        public FightProgressViewModel FightProgress { get; }
+
+        #endregion
     }
 }

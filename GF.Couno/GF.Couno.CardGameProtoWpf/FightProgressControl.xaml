@@ -1,0 +1,23 @@
+<UserControl x:Class="GF.Couno.CardGameProtoWpf.FightProgressControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GF.Couno.CardGameProtoWpf"
+             d:DataContext="{d:DesignInstance Type={x:Type local:FightProgressViewModel}}"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <WrapPanel>
+        <TextBlock>
+            <Run Text="Current Turn:" />
+            <Run Text="{Binding Turn}" />
+        </TextBlock>
+
+        <TextBlock Margin="10,0">
+            <Run Text="Current Player:" />
+            <Run Text="{Binding CurrentFighter.Name, Mode=OneWay}" />
+        </TextBlock>
+    </WrapPanel>
+
+</UserControl>

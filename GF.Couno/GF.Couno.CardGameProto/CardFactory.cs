@@ -6,10 +6,7 @@ namespace GF.Couno.CardGameProto
 {
     public class CardFactory
     {
-        internal Card CreateCard(CardType cardType, int value)
-        {
-            return new Card(cardType, value);
-        }
+        #region - Methoden oeffentlich -
 
         public Card CreateCard(string cardName)
         {
@@ -50,5 +47,13 @@ namespace GF.Couno.CardGameProto
 
             return cardsToProduce.Select(this.CreateCard).ToList();
         }
+
+        #endregion
+
+        #region - Methoden privat -
+
+        internal Card CreateCard(CardType cardType, int value) => new Card(cardType, value);
+
+        #endregion
     }
 }

@@ -4,6 +4,8 @@ namespace GF.Couno.CardGameProtoWpf
 {
     public class CardViewModel
     {
+        #region - Konstruktoren -
+
         public CardViewModel(Card card, string fileName)
         {
             this.Card = card;
@@ -11,15 +13,22 @@ namespace GF.Couno.CardGameProtoWpf
             this.Name = card.ToString();
         }
 
+        #endregion
+
+        #region - Methoden oeffentlich -
+
+        public override string ToString() => this.Name;
+
+        #endregion
+
+        #region - Properties oeffentlich -
+
         public Card Card { get; }
 
         public string Name { get; }
 
         public string FileName { get; }
 
-        public override string ToString()
-        {
-            return this.Name;
-        }
+        #endregion
     }
 }

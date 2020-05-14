@@ -4,35 +4,19 @@ namespace GF.Couno.CardGameProto
 {
     public class Card : IEquatable<Card>
     {
+        #region - Konstruktoren -
+
         public Card(CardType cardType, int value)
         {
             this.CardType = cardType;
             this.Value = value;
         }
 
-        public CardType CardType { get; }
+        #endregion
 
-        public int Value { get; }
+        #region - Methoden oeffentlich -
 
-        public bool Equals(Card other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            return this.CardType == other.CardType && this.Value == other.Value;
-        }
-
-        public override string ToString()
-        {
-            return $"{Enum.GetName(typeof(CardType), this.CardType)}{this.Value.ToString()}";
-        }
+        public override string ToString() => $"{Enum.GetName(typeof(CardType), this.CardType)}{this.Value.ToString()}";
 
         public override bool Equals(object obj)
         {
@@ -51,15 +35,44 @@ namespace GF.Couno.CardGameProto
                 return false;
             }
 
-            return this.Equals((Card) obj);
+            return this.Equals((Card)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((int) this.CardType * 397) ^ this.Value;
+                return ((int)this.CardType * 397) ^ this.Value;
             }
         }
+
+        #endregion
+
+        #region - Properties oeffentlich -
+
+        public CardType CardType { get; }
+
+        public int Value { get; }
+
+        #endregion
+
+        #region IEquatable<Card> Members
+
+        public bool Equals(Card other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return this.CardType == other.CardType && this.Value == other.Value;
+        }
+
+        #endregion
     }
 }

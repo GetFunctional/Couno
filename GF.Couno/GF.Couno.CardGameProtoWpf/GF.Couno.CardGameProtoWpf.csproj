@@ -59,6 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="FighterHudControl.xaml" />
+    <Page Include="FightProgressControl.xaml" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,6 +72,14 @@
     <Compile Include="CardImageSelector.cs" />
     <Compile Include="CardViewModel.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="FighterHudControl.xaml.cs">
+      <DependentUpon>FighterHudControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FighterHudViewModel.cs" />
+    <Compile Include="FightProgressControl.xaml.cs">
+      <DependentUpon>FightProgressControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FightProgressViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

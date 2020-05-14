@@ -7,8 +7,7 @@ namespace GF.Couno.CardGameProtoWpf
 {
     public class ObservableObject : INotifyPropertyChanged, INotifyPropertyChanging
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event PropertyChangingEventHandler PropertyChanging;
+        #region - Methoden privat -
 
         /// <summary>
         ///     Setzt den Wert einer Eigenschaft. Prüft, ob sich der Wert geändert hat und ruft in diesem Fall die
@@ -38,15 +37,9 @@ namespace GF.Couno.CardGameProtoWpf
             return true;
         }
 
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            return this.SetField(ref field, value, propertyName, null);
-        }
+        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null) => this.SetField(ref field, value, propertyName, null);
 
-        protected bool AreEqual<T>(ref T field, T value)
-        {
-            return EqualityComparer<T>.Default.Equals(field, value);
-        }
+        protected bool AreEqual<T>(ref T field, T value) => EqualityComparer<T>.Default.Equals(field, value);
 
         protected void RaisePropertyChanging([CallerMemberName] string propertyName = null)
         {
@@ -113,5 +106,19 @@ namespace GF.Couno.CardGameProtoWpf
 
             return true;
         }
+
+        #endregion
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
+
+        #region INotifyPropertyChanging Members
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        #endregion
     }
 }

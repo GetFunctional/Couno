@@ -6,6 +6,8 @@ namespace GF.Couno.CardGameProtoWpf
 {
     public static class EnumerableExtensions
     {
+        #region - Methoden oeffentlich -
+
         public static IEnumerable<IEnumerable<T>> CartesianProduct<T>
             (this IEnumerable<IEnumerable<T>> sequences)
         {
@@ -39,16 +41,9 @@ namespace GF.Couno.CardGameProtoWpf
             return new T[1] {singleElement};
         }
 
-        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count)
-        {
-            return source.Shuffle().Take(count);
-        }
+        public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count) => source.Shuffle().Take(count);
 
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
-
-        {
-            return source.Shuffle(new Random());
-        }
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) => source.Shuffle(new Random());
 
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rng)
         {
@@ -80,15 +75,9 @@ namespace GF.Couno.CardGameProtoWpf
             return Enumerable.Empty<T>();
         }
 
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
-        {
-            return source == null || !source.Any();
-        }
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source) => source == null || !source.Any();
 
-        public static bool IsEmpty<T>(this IEnumerable<T> source)
-        {
-            return !source.Any();
-        }
+        public static bool IsEmpty<T>(this IEnumerable<T> source) => !source.Any();
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
@@ -132,6 +121,10 @@ namespace GF.Couno.CardGameProtoWpf
             }
         }
 
+        #endregion
+
+        #region - Methoden privat -
+
         private static IEnumerable<T> ShuffleIterator<T>(
             this IEnumerable<T> source, Random rng)
         {
@@ -144,5 +137,7 @@ namespace GF.Couno.CardGameProtoWpf
                 buffer[j] = buffer[i];
             }
         }
+
+        #endregion
     }
 }
