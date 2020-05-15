@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="800"
-    d:DataContext="{d:DesignInstance Type={x:Type local:MainWindowViewModel}}"
     Height="450"
+    d:DataContext="{d:DesignInstance Type={x:Type local:MainWindowViewModel}}"
     mc:Ignorable="d">
 
     <Grid>
@@ -18,17 +18,23 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-        <local:FightProgressControl DataContext="{Binding FightProgress}" Grid.Row="0" />
-        <local:FighterHudControl DataContext="{Binding Enemy}" Grid.Row="1" />
+        <local:FightProgressControl Grid.Row="0" DataContext="{Binding FightProgress}" />
+        <local:FighterHudControl Grid.Row="1" DataContext="{Binding Enemy}" />
 
+        <local:UsableItemsControl Grid.Row="2" DataContext="{Binding FightProgress.CurrentPlayerItems}" />
+        <Button Grid.Row="2" Grid.Column="1" Content="End Turn" Command="{Binding EndTurnCommand}" />
         <!--
             apexDragAndDrop:DragAndDrop.IsDragSource="True"
             apexDragAndDrop:DragAndDrop.IsDropTarget="True"
         -->
 
 
-        <local:FighterHudControl DataContext="{Binding Player}" Grid.Row="3" />
+        <local:FighterHudControl Grid.Row="3" DataContext="{Binding Player}" />
 
     </Grid>
 </Window>

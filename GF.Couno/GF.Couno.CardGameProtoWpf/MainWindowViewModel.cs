@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace GF.Couno.CardGameProtoWpf
 {
@@ -22,6 +23,11 @@ namespace GF.Couno.CardGameProtoWpf
         public FighterHudViewModel Player { get; set; }
 
         public FightProgressViewModel FightProgress { get; }
+
+        public ICommand EndTurnCommand
+        {
+            get;
+        }
 
         #endregion
     }
