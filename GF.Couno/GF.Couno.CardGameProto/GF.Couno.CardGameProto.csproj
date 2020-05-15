@@ -45,6 +45,7 @@
     <Compile Include="CardFactory.cs" />
     <Compile Include="CardType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueRestriction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

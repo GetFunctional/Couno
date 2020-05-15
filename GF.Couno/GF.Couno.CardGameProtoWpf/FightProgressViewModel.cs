@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
+using GF.Couno.CardGameProto;
 
 namespace GF.Couno.CardGameProtoWpf
 {
@@ -8,6 +11,7 @@ namespace GF.Couno.CardGameProtoWpf
 
         private FighterHudViewModel _currentFighter;
         private int _turn;
+        private UsableItemsViewModel _currentPlayerItems;
 
         #endregion
 
@@ -39,6 +43,14 @@ namespace GF.Couno.CardGameProtoWpf
 
             var nextPlayer = this.PlayerTurnQueue.Dequeue();
             this.CurrentFighter = nextPlayer;
+            this.CurrentPlayerItems = new UsableItemsViewModel(new List<ItemViewModel>() { BuildSword() });
+        }
+
+        private ItemViewModel BuildSword()
+        {
+            var reqs = new List<RequirementViewModel>()
+                {new RequirementViewModel() {MaxValue = 6, MinValue = 2, ValueRestriction = ValueRestriction.Range}};
+            return new ItemViewModel("Schwert", "Schlägt zu", reqs);
         }
 
         #endregion
@@ -59,6 +71,12 @@ namespace GF.Couno.CardGameProtoWpf
         {
             get => this._turn;
             set => this.SetField(ref this._turn, value);
+        }
+
+        public UsableItemsViewModel CurrentPlayerItems
+        {
+            get => _currentPlayerItems;
+            set => this.SetField(ref this._currentPlayerItems, value);
         }
 
         #endregion
