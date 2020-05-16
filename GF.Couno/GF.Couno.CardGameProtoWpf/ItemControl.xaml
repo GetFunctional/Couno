@@ -18,6 +18,10 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <Button
+            Command="{Binding UseItemCommand}"
+            CommandParameter="{Binding}"
+            Content="Use Item" />
         <TextBlock Text="{Binding ItemDescription}" />
     </StackPanel>
 </UserControl>
