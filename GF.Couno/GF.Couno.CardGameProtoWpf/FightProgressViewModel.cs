@@ -54,7 +54,43 @@ namespace GF.Couno.CardGameProtoWpf
             {
                 case DealDamage dmg:
                     var enemies = FighterOrder.Except(this.CurrentFighter.Yield()).ToList();
-                    enemies.ForEach(fighter => fighter.Health -= dmg.AmountDamage);
+                    enemies.ForEach(fighter =>
+                    {
+                        var damage = CurrentFighter.NextDamageMultiplyBy > 0
+                            ? dmg.AmountDamage * CurrentFighter.NextDamageMultiplyBy
+                            : dmg.AmountDamage;
+                        CurrentFighter.NextDamageMultiplyBy = 0;
+
+                        if (fighter.Shield > 0)
+                        {
+                            if (fighter.Shield > damage)
+                            {
+                                fighter.Shield -= damage;
+                            }
+                            else
+                            {
+                                var damageLeft = damage - fighter.Shield;
+                                fighter.Shield = 0;
+                                fighter.Health -= damageLeft;
+                            }
+                        }
+                        else
+                        {
+                            fighter.Health -= damage;
+                        }
+                    });
+                    break;
+
+                case HealSelf heal:
+                    this.CurrentFighter.Health += heal.Amount;
+                    break;
+
+                case MultiplyDamage multiply:
+                    this.CurrentFighter.NextDamageMultiplyBy = multiply.Amount;
+                    break;
+
+                case ShieldUp shield:
+                    this.CurrentFighter.Shield += shield.Amount;
                     break;
             }
 
@@ -75,7 +111,32 @@ namespace GF.Couno.CardGameProtoWpf
 
             var nextPlayer = PlayerTurnQueue.Dequeue();
             CurrentFighter = nextPlayer;
-            CurrentPlayerItems = new UsableItemsViewModel(new List<ItemViewModel> { BuildSword() });
+            CurrentPlayerItems = new UsableItemsViewModel(BuildRandomItems(3, 3));
+        }
+
+        private List<ItemViewModel> BuildRandomItems(int amount, int amountEffects)
+        {
+            var allEffects = GetAllItemEffects();
+            var itemsWithEffects = new List<ItemViewModel>();
+            for (int current = 0; current < amount; current++)
+            {
+                var effects = allEffects.PickRandom(amountEffects).ToList();
+                var item = new ItemViewModel("Random", "Random", new List<RequirementViewModel>(), effects, _useItemCommand);
+                itemsWithEffects.Add(item);
+            }
+
+            return itemsWithEffects;
+        }
+
+        private IList<IEffect> GetAllItemEffects()
+        {
+            return new List<IEffect>()
+            {
+                new DealDamage(3),
+                new HealSelf(2),
+                new ShieldUp(2),
+                new MultiplyDamage(2),
+            };
         }
 
         private readonly ICommand _useItemCommand;
@@ -84,7 +145,7 @@ namespace GF.Couno.CardGameProtoWpf
         {
             var reqs = new List<RequirementViewModel>
                 {new RequirementViewModel {MaxValue = 6, MinValue = 2, ValueRestriction = ValueRestriction.Range}};
-            return new ItemViewModel("Schwert", "Schlägt zu", reqs, new List<IEffect>() { new DealDamage(6) },_useItemCommand );
+            return new ItemViewModel("Schwert", "Schlägt zu", reqs, new List<IEffect>() { new DealDamage(6) }, _useItemCommand);
         }
 
         #endregion

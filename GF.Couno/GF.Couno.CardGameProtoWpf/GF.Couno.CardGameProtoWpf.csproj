@@ -72,7 +72,11 @@
     </ApplicationDefinition>
     <Compile Include="DealDamage.cs" />
     <Compile Include="EffectTarget.cs" />
+    <Compile Include="HealSelf.cs" />
     <Compile Include="IEffect.cs" />
+    <Compile Include="MultiplyDamage.cs" />
+    <Compile Include="RandomExtensions.cs" />
+    <Compile Include="ShieldUp.cs" />
     <Compile Include="UsableItemsControl.xaml.cs">
       <DependentUpon>UsableItemsControl.xaml</DependentUpon>
     </Compile>

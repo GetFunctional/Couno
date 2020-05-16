@@ -43,7 +43,7 @@ namespace GF.Couno.CardGameProtoWpf
 
         public static IEnumerable<T> PickRandom<T>(this IEnumerable<T> source, int count) => source.Shuffle().Take(count);
 
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) => source.Shuffle(new Random());
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) => source.Shuffle(RandomExtensions.ThisThreadsRandom);
 
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rng)
         {
@@ -130,7 +130,6 @@ namespace GF.Couno.CardGameProtoWpf
         {
             var buffer = source.ToList();
             for (var i = 0; i < buffer.Count; i++)
-
             {
                 var j = rng.Next(i, buffer.Count);
                 yield return buffer[j];

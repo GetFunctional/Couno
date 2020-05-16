@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 
 namespace GF.Couno.CardGameProtoWpf
@@ -9,7 +10,7 @@ namespace GF.Couno.CardGameProtoWpf
             IList<IEffect> itemEffects, ICommand useItemCommand)
         {
             ItemName = itemName;
-            ItemDescription = itemDescription;
+            ItemDescription = string.Join("|", itemEffects.Select(ie => ie.GetType().Name));
             Requirements = requirements;
             ItemEffects = itemEffects;
             UseItemCommand = useItemCommand;

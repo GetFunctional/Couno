@@ -17,6 +17,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock
@@ -28,11 +31,29 @@
         <TextBlock
             Grid.Column="1"
             Margin="35,0"
-            FontSize="16"
-            Text="{Binding Health}" />
+            FontSize="16">
+            <Run Text="Health:" />
+            <Run Text="{Binding Health}" />
+        </TextBlock>
+
+        <TextBlock
+            Grid.Column="2"
+            Margin="35,0"
+            FontSize="16">
+            <Run Text="Shield:" />
+            <Run Text="{Binding Shield}" />
+        </TextBlock>
+
+        <TextBlock
+            Grid.Column="3"
+            Margin="35,0"
+            FontSize="16">
+            <Run Text="Multiply:" />
+            <Run Text="{Binding NextDamageMultiplyBy}" />
+        </TextBlock>
 
         <ItemsControl
-            Grid.Column="2"
+            Grid.Column="4"
             Background="Transparent"
             ItemTemplate="{StaticResource CardDataTemplate}"
             ItemsSource="{Binding CardsInHand}">

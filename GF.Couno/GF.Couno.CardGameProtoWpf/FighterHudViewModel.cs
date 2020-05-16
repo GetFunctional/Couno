@@ -13,6 +13,8 @@ namespace GF.Couno.CardGameProtoWpf
         private ObservableCollection<CardViewModel> _cardsInHand;
         private readonly CardFactory _cardFactory = new CardFactory();
         private readonly CardImageSelector _cardImageSelector = new CardImageSelector();
+        private int _shield;
+        private int _nextDamageMultiplyBy;
 
         #endregion
 
@@ -54,6 +56,18 @@ namespace GF.Couno.CardGameProtoWpf
         {
             get => this._cardsInHand;
             set => this.SetField(ref this._cardsInHand, value);
+        }
+
+        public int Shield
+        {
+            get => _shield;
+            set => this.SetField(ref this._shield, value);
+        }
+
+        public int NextDamageMultiplyBy
+        {
+            get => _nextDamageMultiplyBy;
+            set => this.SetField(ref this._nextDamageMultiplyBy, value);
         }
 
         #endregion
