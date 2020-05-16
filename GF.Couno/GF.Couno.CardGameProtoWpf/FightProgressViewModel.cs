@@ -43,6 +43,8 @@ namespace GF.Couno.CardGameProtoWpf
             {
                 this.ApplyItemEffect(itemEffect);
             }
+
+            this.CurrentPlayerItems.FighterItems.Remove(item);
         }
 
         private void ApplyItemEffect(IEffect itemEffect)
@@ -51,7 +53,7 @@ namespace GF.Couno.CardGameProtoWpf
             switch (itemEffect)
             {
                 case DealDamage dmg:
-                    var enemies = PlayerTurnQueue.Except(this.CurrentFighter.Yield()).ToList();
+                    var enemies = FighterOrder.Except(this.CurrentFighter.Yield()).ToList();
                     enemies.ForEach(fighter => fighter.Health -= dmg.AmountDamage);
                     break;
             }

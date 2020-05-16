@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Documents;
 
 namespace GF.Couno.CardGameProtoWpf
@@ -7,9 +8,9 @@ namespace GF.Couno.CardGameProtoWpf
     {
         public UsableItemsViewModel(List<ItemViewModel> fighterItems)
         {
-            FighterItems = fighterItems;
+            FighterItems = new ObservableCollection<ItemViewModel>(fighterItems);
         }
 
-        public List<ItemViewModel> FighterItems { get; set; }
+        public ObservableCollection<ItemViewModel> FighterItems { get; set; }
     }
 }
