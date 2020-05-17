@@ -1,6 +1,6 @@
-namespace GF.Couno.CardGameProtoWpf
+namespace GF.Couno.FightSystem.Effects
 {
-    internal class HealSelf : IEffect
+    public class HealSelf : IEffect
     {
         public int Amount { get; }
 

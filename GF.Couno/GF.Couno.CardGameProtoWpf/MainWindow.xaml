@@ -27,7 +27,11 @@
         <local:FighterHudControl Grid.Row="1" DataContext="{Binding Enemy}" />
 
         <local:UsableItemsControl Grid.Row="2" DataContext="{Binding FightProgress.CurrentPlayerItems}" />
-        <Button Grid.Row="2" Grid.Column="1" Content="End Turn" Command="{Binding EndTurnCommand}" />
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Command="{Binding EndTurnCommand}"
+            Content="End Turn" />
         <!--
             apexDragAndDrop:DragAndDrop.IsDragSource="True"
             apexDragAndDrop:DragAndDrop.IsDropTarget="True"

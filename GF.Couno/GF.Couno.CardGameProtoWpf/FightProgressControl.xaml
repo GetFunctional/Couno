@@ -10,12 +10,12 @@
 
     <WrapPanel>
         <TextBlock>
-            <Run Text="Current Turn:" />
+            <Run Text="CurrentState Turn:" />
             <Run Text="{Binding Turn}" />
         </TextBlock>
 
         <TextBlock Margin="10,0">
-            <Run Text="Current Player:" />
+            <Run Text="CurrentState Player:" />
             <Run Text="{Binding CurrentFighter.Name, Mode=OneWay}" />
         </TextBlock>
     </WrapPanel>

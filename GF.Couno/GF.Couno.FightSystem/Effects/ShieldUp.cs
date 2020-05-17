@@ -1,4 +1,4 @@
-namespace GF.Couno.CardGameProtoWpf
+namespace GF.Couno.FightSystem.Effects
 {
     internal class ShieldUp : IEffect
     {

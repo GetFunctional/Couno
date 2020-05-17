@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using GF.Couno.FightSystem.Effects;
 
 namespace GF.Couno.CardGameProtoWpf
 {

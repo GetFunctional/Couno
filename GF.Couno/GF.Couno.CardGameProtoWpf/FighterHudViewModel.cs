@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using GF.Couno.CardGameProto;
+using GF.Couno.FightSystem;
 
 namespace GF.Couno.CardGameProtoWpf
 {
@@ -15,15 +16,16 @@ namespace GF.Couno.CardGameProtoWpf
         private readonly CardImageSelector _cardImageSelector = new CardImageSelector();
         private int _shield;
         private int _nextDamageMultiplyBy;
+        private FightInfoResult _currentFight;
 
         #endregion
 
         #region - Konstruktoren -
 
-        public FighterHudViewModel(int health, string name)
+        public FighterHudViewModel(FighterInfo fighterInfo)
         {
-            this.Health = health;
-            this.Name = name;
+            this.Shield = fighterInfo.Shield;
+            this.Health = fighterInfo.Health;
             this.CardDeck = new ObservableCollection<CardViewModel>(this.CreateRandomCards(15, this._cardFactory.CreateCardSequence(7)));
             this.CardsInHand = new ObservableCollection<CardViewModel>(this.CardDeck.Take(3));
         }

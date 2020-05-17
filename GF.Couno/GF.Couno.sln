@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.Couno.CardGameProto", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.Couno.CardGameProtoWpf", "GF.Couno.CardGameProtoWpf\GF.Couno.CardGameProtoWpf.csproj", "{46C6ECFC-E97F-4160-8539-FFBA97802BAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.Couno.FightSystem", "GF.Couno.FightSystem\GF.Couno.FightSystem.csproj", "{AAAE0791-3A23-4C51-A5AE-C6B168055EDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GF.Couno.FightSystem.Tests", "GF.Couno.FightSystem.Tests\GF.Couno.FightSystem.Tests.csproj", "{C6D238F1-D6D3-4D62-9298-D29EBAA46BEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{46C6ECFC-E97F-4160-8539-FFBA97802BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46C6ECFC-E97F-4160-8539-FFBA97802BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46C6ECFC-E97F-4160-8539-FFBA97802BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAAE0791-3A23-4C51-A5AE-C6B168055EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAAE0791-3A23-4C51-A5AE-C6B168055EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAAE0791-3A23-4C51-A5AE-C6B168055EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAAE0791-3A23-4C51-A5AE-C6B168055EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D238F1-D6D3-4D62-9298-D29EBAA46BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D238F1-D6D3-4D62-9298-D29EBAA46BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D238F1-D6D3-4D62-9298-D29EBAA46BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D238F1-D6D3-4D62-9298-D29EBAA46BEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
