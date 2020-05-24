@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight.CommandWpf;
 using GF.Couno.FightSystem;
+using GF.Couno.FightSystem.Entities;
 
 namespace GF.Couno.CardGameProtoWpf
 {
@@ -11,6 +12,7 @@ namespace GF.Couno.CardGameProtoWpf
 
         public MainWindowViewModel()
         {
+            this.FightProgress = new FightProgressViewModel();
             EndTurnCommand = new RelayCommand(() => FightProgress.EndTurn());
         }
 
@@ -25,6 +27,9 @@ namespace GF.Couno.CardGameProtoWpf
 
             Player = new FighterHudViewModel(_currentFight.PlayerFighterInfo);
             Enemy = new FighterHudViewModel(_currentFight.EnemyFighterInfo);
+
+            this.FightProgress.RegisterFighters(Player, Enemy);
+            this.FightProgress.ApplyFightData(_currentFight);
         }
 
         #endregion

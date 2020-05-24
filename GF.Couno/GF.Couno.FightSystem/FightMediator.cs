@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GF.Couno.FightSystem.Entities;
 using MediatR;
 
 namespace GF.Couno.FightSystem

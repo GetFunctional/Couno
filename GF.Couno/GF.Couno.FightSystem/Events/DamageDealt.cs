@@ -1,4 +1,5 @@
 ﻿using System;
+using GF.Couno.FightSystem.Entities;
 
 namespace GF.Couno.FightSystem.Events
 {

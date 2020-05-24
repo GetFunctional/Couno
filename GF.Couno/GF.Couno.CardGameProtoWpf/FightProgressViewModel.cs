@@ -15,12 +15,11 @@ namespace GF.Couno.CardGameProtoWpf
         #region - Konstruktoren -
 
 
-        public FightProgressViewModel(IEnumerable<FighterHudViewModel> fighters)
+        public FightProgressViewModel()
         {
-            FighterOrder = new List<FighterHudViewModel>(fighters.Shuffle());
-            PlayerTurnQueue = new Queue<FighterHudViewModel>(FighterOrder);
-            this._useItemCommand = new GalaSoft.MvvmLight.CommandWpf.RelayCommand<ItemViewModel>(UseItem);
-            NextTurn();
+            //PlayerTurnQueue = new Queue<FighterHudViewModel>(FighterOrder);
+            //this._useItemCommand = new GalaSoft.MvvmLight.CommandWpf.RelayCommand<ItemViewModel>(UseItem);
+            //NextTurn();
         }
 
         #endregion
@@ -67,16 +66,16 @@ namespace GF.Couno.CardGameProtoWpf
         //                    : dmg.AmountDamage;
         //                CurrentFighter.NextDamageMultiplyBy = 0;
 
-        //                if (fighter.Shield > 0)
+        //                if (fighter.Turn > 0)
         //                {
-        //                    if (fighter.Shield > damage)
+        //                    if (fighter.Turn > damage)
         //                    {
-        //                        fighter.Shield -= damage;
+        //                        fighter.Turn -= damage;
         //                    }
         //                    else
         //                    {
-        //                        var damageLeft = damage - fighter.Shield;
-        //                        fighter.Shield = 0;
+        //                        var damageLeft = damage - fighter.Turn;
+        //                        fighter.Turn = 0;
         //                        fighter.Health -= damageLeft;
         //                    }
         //                }
@@ -96,7 +95,7 @@ namespace GF.Couno.CardGameProtoWpf
         //            break;
 
         //        case ShieldUp shield:
-        //            this.CurrentFighter.Shield += shield.Amount;
+        //            this.CurrentFighter.Turn += shield.Amount;
         //            break;
         //    }
 
@@ -145,6 +144,8 @@ namespace GF.Couno.CardGameProtoWpf
 
         private readonly ICommand _useItemCommand;
         private Task<FightInfoResult> _fight;
+        private FighterHudViewModel _enemy;
+        private FighterHudViewModel _player;
 
         #endregion
 
@@ -173,5 +174,29 @@ namespace GF.Couno.CardGameProtoWpf
         }
 
         #endregion
+
+        public void ApplyFightData(FightInfoResult currentFight)
+        {
+            //var currentFighter = this.GetCurrentFighter(currentFight.CurrentTurnFighterId);
+            //this.CurrentFighter = currentFight.CurrentTurnFighterId;
+        }
+
+        public void RegisterFighters(FighterHudViewModel player, FighterHudViewModel enemy)
+        {
+            this.Player = player;
+            this.Enemy = enemy;
+        }
+
+        public FighterHudViewModel Enemy
+        {
+            get => _enemy;
+            set => this.SetField(ref _enemy, value);
+        }
+
+        public FighterHudViewModel Player
+        {
+            get => _player;
+            set => this.SetField(ref _player, value);
+        }
     }
 }

@@ -40,7 +40,7 @@
             Grid.Column="2"
             Margin="35,0"
             FontSize="16">
-            <Run Text="Shield:" />
+            <Run Text="Turn:" />
             <Run Text="{Binding Shield}" />
         </TextBlock>
 

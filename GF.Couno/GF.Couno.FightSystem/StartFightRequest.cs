@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using GF.Couno.FightSystem.Entities;
+using MediatR;
 
 namespace GF.Couno.FightSystem
 {

@@ -1,4 +1,6 @@
-﻿namespace GF.Couno.FightSystem
+﻿using GF.Couno.FightSystem.Entities;
+
+namespace GF.Couno.FightSystem
 {
     public class FightInfoResult
     {
@@ -11,8 +13,9 @@
 
         public FightId FightId { get; }
 
-        public FighterInfo PlayerFighterInfo { get; set; }
+        public FighterInfo PlayerFighterInfo { get; }
 
-        public FighterInfo EnemyFighterInfo { get; set; }
+        public FighterInfo EnemyFighterInfo { get; }
+        public FighterId CurrentTurnFighterId { get; }
     }
 }

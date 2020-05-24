@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GF.Couno.FightSystem
+namespace GF.Couno.FightSystem.Entities
 {
     public sealed class FightId : IEquatable<FightId>
     {

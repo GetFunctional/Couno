@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using GF.Couno.FightSystem.Components;
 using GF.Couno.FightSystem.Ecs;
+using GF.Couno.FightSystem.Entities;
 
 namespace GF.Couno.FightSystem
 {

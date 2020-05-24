@@ -1,4 +1,6 @@
-﻿namespace GF.Couno.FightSystem
+﻿using GF.Couno.FightSystem.Entities;
+
+namespace GF.Couno.FightSystem
 {
     public class FighterInfo
     {
